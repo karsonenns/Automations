@@ -1,0 +1,10 @@
+---
+title: 💣 Full Reset
+---
+
+
+* "AppleScripts/FullReset.scpt"
+* do shell script "afplay '/System/Library/Sounds/Blow.aiff'"
+(pause 1)
+!Full-Reset.bunch
+

@@ -1,0 +1,65 @@
+---
+title: 📆 Meeting - General
+sequence: parallel
+---
+
+snippets_path="~/Documents/Automations/Snippets"
+applescript_path="~/Documents/Automations/AppleScripts"
+shell_path="~/Documents/Automations/ShellCommands"
+applications_path="/Applications"
+
+if MeetInOne is not running
+<<#Setup Meeting
+end
+
+<<#Open Meeting
+
+    <<#On Finish ~1
+
+!<<#End Meeting
+
+
+___
+###[Setup Meeting]
+
+* "${applescript_path}/AppleScripts/CloseAppsMeetings.scpt"
+@@
+(pause 1)
+
+// Open Apps
+%Google Chrome
+%Bear
+%Spotify
+%Slack
+!Notion
+!MeetInOne
+
+
+//Open Taskbar Apps
+* "${applescript_path}/OpenChromeProfile.scpt"
+$ open ${applications_path}/MeetInOne.app
+$ open ${applications_path}/Notion.app
+$ open ${applications_path}/Slack.app
+$ open ${applications_path}/Bear.app ~1
+$ open ${applications_path}/Spotify.app
+
+###[Open Meeting]
+
+//Command to Open next Meeting
+{$@o}
+* "${applescript_path}/PauseSpotify.scpt"
+* "${applescript_path}/CameraOn.scpt"
+
+//Wait Until things have finished launching
+###[On Finish]
+<${snippets_path}/moom.snippet ~1
+
+
+// END MEETING
+###[End Meeting]
+* "${applescript_path}/MergeChromeTabs.scpt"
+* tell application "Moom" to arrange windows according to snapshot named "Meeting End"
+* "${applescript_path}/CameraOff.scpt"
+
+
+

@@ -1,0 +1,1 @@
+do shell script "(&>/dev/null ssh root@10.10.0.26 'activator send libactivator.system.homebutton && activator send libactivator.system.homebutton && activator send com.reincubate.ios.cam' &)"

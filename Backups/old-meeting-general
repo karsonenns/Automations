@@ -1,0 +1,154 @@
+---
+title: 📆 Meeting - General
+---
+
+//Close Apps
+// * "AppleScripts/CloseAppsMeetings.scpt"
+
+// (pause 1)
+
+//Hide all currently visible apps
+// @@
+
+//Launch Meeting Apps
+//% keeps apps alive if Bunch launched it
+// %Google Chrome
+// %Bear
+// %Spotify
+// %Slack
+// Notion
+
+
+
+// {$@o}
+// !MeetInOne
+
+// <moom.snippet ~5
+
+//Focus the buggy apps (Chromium)
+//Even if open these need to be focused to they come up.
+// @Spotify
+// @Bear
+// @Notion
+// @Google Chrome
+// @Slack
+
+// * "AppleScripts/MergeChromeTabs.scpt"
+// * "AppleScripts/OpenMeet.scpt"
+//* "AppleScripts/PauseSpotify.scpt"
+
+* say hi
+
+
+!* tell application "Moom" to arrange windows according to snapshot named "Meeting End"
+!* "AppleScripts/MergeChromeTabs.scpt"
+
+// Open Scratch Pad
+// bear://x-callback-url/open-note?id=DEB97C1A-5E75-4653-9AB4-BAA4A0055E82-13724-0000FC94DC6A827D&new_window=yes
+
+
+
+
+// // // // // // // // // // // // // 
+// DOCUMENTATION
+// // // // // // // // // // // // // 
+
+// Comments start with a hash symbol (#), a double slash (//)
+// or are surrounded by /*...*/. blank lines are ignored
+
+// Use @@ to hide all visible apps. Usually used at the top
+// of the file before launching the rest of the bunch
+// @@
+
+// Apps to launch start at the beginning of a line, no
+// need to quote or escape.
+// %Google Chrome
+// %Slack
+// %Bear
+// %Spotify
+// Notion
+
+/* Apps launched by a Bunch are quit when the Bunch is closed
+   Add a percent symbol to ignore it when closing the Bunch
+   (i.e. keep it running) */
+# %Terminal
+
+// Include a line starting with a dash to open specific
+// files in the app
+// %Finder
+// - ~/Desktop
+// - ~/Documents
+
+// Commands are surrounded by parenthesis. Only commands
+// Bunch recognizes will be executed
+# ([hide|show] dock) // Turn Dock autohiding on or off
+# ([hide|show] desktop) // Show or hide desktop icons
+# (dnd [on|off]) // Turn Do Not Disturb on or off
+// (hide dock)
+
+// This command displays an HTML file in a 500w by 600h
+// floating window
+// (display chrome:https://meet.google.com 500x600 level:floating chrome:none)
+
+
+
+// Use a URL on a line to open it in your default browser
+
+
+
+
+// You can also target a specific browser
+# chrome:https://bunchapp.co/
+
+// You can also use URL schemes from other apps
+# x-marked://open?file=Work Stuff.md
+
+// Start a line with an exclamation point to quit that
+// app if it's running
+# !Mail
+
+// Use a "double negative" to launch an app when closing a
+// Bunch
+# !!Notes
+
+// Start a line with an asterisk (*) to execute as applescript
+
+
+// Set Windows
+
+
+// Or run a shell script with a dollar sign ($)
+// and set environment variables with "file" markers
+# $ /usr/local/scripts/myscript.sh arg1 arg2
+# - KEY=value
+
+/* Or an Automator Workflow with an ampersand (&) If the
+   workflow is in your Bunch Folder, you don't need a
+   path.
+
+   File markers will set variables in the workflow */
+# & My Workflow.workflow
+# - key=val
+
+/* You can also have scripts that only run when closing a
+   Bunch You can use different arguments/variables to the
+   same script.
+
+   Works as !$, !&, and !* */
+# !$ /usr/local/scripts/myscript.sh quit
+# - STATUS=closing
+
+/* Start a line with @ to "focus" that app (hide others)
+
+   Focus commands should be the last app item in the Bunch,
+   and the focused app should already have been launched. */
+# @Marked 2
+
+/* Avoid repetition in your Bunch files by creating snippet
+   files and importing them <mysnippet.snippet
+
+  Add sections to a snippet file with #[Section Name] and
+  reference it */
+# <mysnippets.snippet#Section Name
+
+// See the documentation for more info: https://brettterpstra.com/bunch
