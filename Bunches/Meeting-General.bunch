@@ -1,6 +1,5 @@
 ---
 title: 📆 Meeting - General
-sequence: parallel
 ---
 
 snippets_path="~/Documents/Automations/Snippets"
@@ -22,7 +21,8 @@ end
 ___
 ###[Setup Meeting]
 
-* "${applescript_path}/AppleScripts/CloseAppsMeetings.scpt"
+* ${applescript_path}/CloseAppsMeetings.scpt
+(pause 1)
 @@
 (pause 1)
 
@@ -35,20 +35,17 @@ ___
 !MeetInOne
 
 
-//Open Taskbar Apps
-* "${applescript_path}/OpenChromeProfile.scpt"
-$ open ${applications_path}/MeetInOne.app
-$ open ${applications_path}/Notion.app
-$ open ${applications_path}/Slack.app
-$ open ${applications_path}/Bear.app ~1
-$ open ${applications_path}/Spotify.app
+//Forces Open Felix chrome profile
+* ${applescript_path}/OpenChromeProfile.scpt
+//Focuses Apps via shell, because Bunch is fiddly with it.
+$ ${shell_path}/OpenMeetingApps.sh
 
 ###[Open Meeting]
 
 //Command to Open next Meeting
 {$@o}
-* "${applescript_path}/PauseSpotify.scpt"
-* "${applescript_path}/CameraOn.scpt"
+* ${applescript_path}/PauseSpotify.scpt
+* ${applescript_path}/CameraOn.scpt
 
 //Wait Until things have finished launching
 ###[On Finish]
