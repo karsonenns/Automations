@@ -1,6 +1,14 @@
 ---
 title: Desktop
 ---
+snippets_path="~/Documents/Automations/Snippets"
+< ${snippets_path}/OnStart.snippet
 
-(screen #404040 90%)
-@Google Chrome
+
+$ ${shell_path}/MenuBarColor.sh '#ffffff'
+
+$ bunch -c Desktop ~5
+
+
+// (screen #404040 90%)
+// @Google Chrome

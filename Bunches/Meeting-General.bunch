@@ -3,9 +3,7 @@ title: 📆 Meeting - General
 ---
 
 snippets_path="~/Documents/Automations/Snippets"
-applescript_path="~/Documents/Automations/AppleScripts"
-shell_path="~/Documents/Automations/ShellCommands"
-applications_path="/Applications"
+< ${snippets_path}/OnStart.snippet
 
 if MeetInOne is not running
 <<#Setup Meeting
@@ -43,6 +41,7 @@ $ ${shell_path}/OpenMeetingApps.sh
 ###[Open Meeting]
 
 //Command to Open next Meeting
+$ ${shell_path}/MenuBarColor.sh '#3279a8'
 {$@o}
 * ${applescript_path}/PauseSpotify.scpt
 * ${applescript_path}/CameraOn.scpt
@@ -54,6 +53,7 @@ $ ${shell_path}/OpenMeetingApps.sh
 
 // END MEETING
 ###[End Meeting]
+$ ${shell_path}/MenuBarColor.sh '#000000'
 * "${applescript_path}/MergeChromeTabs.scpt"
 * tell application "Moom" to arrange windows according to snapshot named "Meeting End"
 * "${applescript_path}/CameraOff.scpt"
